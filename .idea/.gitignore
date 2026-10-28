@@ -1,0 +1,26 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local machine configuration
+local.properties
+
+# Android build outputs
+*.apk
+*.aab
+
+# Kotlin
+.kotlin/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
