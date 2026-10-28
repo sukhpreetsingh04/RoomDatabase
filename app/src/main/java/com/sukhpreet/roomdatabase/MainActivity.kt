@@ -7,11 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.sukhpreet.roomdatabase.ui.theme.RoomDatabaseTheme
+import com.sukhpreet.roomdatabase.view.EmployeeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,28 +18,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             RoomDatabaseTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                    EmployeeScreen(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize(),
+                        onSave = { name: String, age: Int -> },
+                        onUpdate = { name: String, age: Int, id: Int -> },
+                        onDelete = { id -> },
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RoomDatabaseTheme {
-        Greeting("Android")
     }
 }
