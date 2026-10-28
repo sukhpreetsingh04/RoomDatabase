@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -27,12 +28,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sukhpreet.roomdatabase.data.local.EmployeeEntity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmployeeScreen(
     modifier: Modifier = Modifier,
     onSave: (String, Int) -> Unit,
+    employees: List<EmployeeEntity> = emptyList(),
     onUpdate: (String, Int, Int) -> Unit,
     onDelete: (Int) -> Unit
 ) {
@@ -117,16 +120,17 @@ fun EmployeeScreen(
                             .fillMaxWidth()
                     )
                 }
+                items(employees) { employee ->
+                    EmployeeItem(
+                        modifier = Modifier.padding(8.dp),
+                        id = employee.id,
+                        name = employee.name,
+                        age = employee.age,
+                        onDelete = {onDelete.invoke(employee.id)}
+                    )
+                }
                 repeat(12) {
-                    item {
-                        EmployeeItem(
-                            modifier = Modifier.padding(8.dp),
-                            id = 1,
-                            name = "John",
-                            age = 26,
-                            onDelete = onDelete
-                        )
-                    }
+
                 }
             }
         }
