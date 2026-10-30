@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -18,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
@@ -28,7 +28,8 @@ fun EmployeeItem(
     id: Int,
     name: String,
     age: Int,
-    onDelete: (Int) -> Unit
+    onDelete: (Int) -> Unit,
+    onEdit: () -> Unit
 ) {
     Row(
         modifier = modifier
@@ -45,19 +46,12 @@ fun EmployeeItem(
             Text(age.toString(), style = MaterialTheme.typography.bodyLarge)
         }
 
+        IconButton(onClick = { onEdit()}) {
+            Icon(imageVector = Icons.Default.Edit, contentDescription = null)
+        }
+
         IconButton(onClick = { onDelete(id) }) {
             Icon(imageVector = Icons.Default.Delete, contentDescription = null)
         }
     }
-}
-
-@Preview
-@Composable
-fun EmployeeItemPreview(modifier: Modifier = Modifier) {
-    EmployeeItem(
-        modifier = modifier,
-        id = 1,
-        name = "John",
-        age = 12
-    ) { }
 }

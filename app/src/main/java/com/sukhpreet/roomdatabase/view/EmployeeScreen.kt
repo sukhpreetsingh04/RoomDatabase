@@ -31,7 +31,11 @@ fun EmployeeScreen(
 ) {
     var name by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
-    var id by remember { mutableStateOf("") }
+
+    // Keeps track of the employee currently being edited
+    var selectedEmployee by remember {
+        mutableStateOf<EmployeeEntity?>(null)
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -54,15 +58,34 @@ fun EmployeeScreen(
                 .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+
             EmployeeForm(
                 name = name,
                 age = age,
-                id = id,
                 onNameChange = { name = it },
                 onAgeChange = { age = it },
-                onIdChange = { id = it },
-                onSave = onSave,
-                onUpdate = onUpdate
+
+                onSave = { employeeName, employeeAge ->
+                    onSave(employeeName, employeeAge)
+                    name = ""
+                    age = ""
+                },
+
+                onUpdate = { updatedName, updatedAge ->
+
+                    selectedEmployee?.let { employee ->
+
+                        onUpdate(
+                            updatedName,
+                            updatedAge,
+                            employee.id
+                        )
+
+                        selectedEmployee = null
+                        name = ""
+                        age = ""
+                    }
+                }
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -70,7 +93,13 @@ fun EmployeeScreen(
             EmployeeList(
                 modifier = Modifier.weight(1f),
                 employees = employees,
-                onDelete = onDelete
+                onDelete = onDelete,
+
+                onEdit = { employee ->
+                    selectedEmployee = employee
+                    name = employee.name
+                    age = employee.age.toString()
+                }
             )
         }
     }

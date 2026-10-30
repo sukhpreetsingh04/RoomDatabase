@@ -22,12 +22,10 @@ import androidx.compose.ui.unit.dp
 fun EmployeeForm(
     name: String,
     age: String,
-    id: String,
     onNameChange: (String) -> Unit,
     onAgeChange: (String) -> Unit,
-    onIdChange: (String) -> Unit,
     onSave: (String, Int) -> Unit,
-    onUpdate: (String, Int, Int) -> Unit
+    onUpdate: (String, Int) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -69,17 +67,6 @@ fun EmployeeForm(
                 singleLine = true
             )
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = id,
-                onValueChange = onIdChange,
-                label = { Text("Employee ID (for update)") },
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number
-                ),
-                singleLine = true
-            )
-
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -104,18 +91,14 @@ fun EmployeeForm(
                     modifier = Modifier.weight(1f),
                     onClick = {
                         val parsedAge = age.toIntOrNull()
-                        val parsedId = id.toIntOrNull()
 
                         if (name.isNotBlank() &&
                             parsedAge != null &&
-                            parsedAge >= 0 &&
-                            parsedId != null &&
-                            parsedId > 0
+                            parsedAge >= 0
                         ) {
                             onUpdate(
                                 name.trim(),
-                                parsedAge,
-                                parsedId
+                                parsedAge
                             )
                         }
                     }

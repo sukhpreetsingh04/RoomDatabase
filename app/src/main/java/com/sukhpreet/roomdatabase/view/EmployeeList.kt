@@ -18,7 +18,8 @@ import com.sukhpreet.roomdatabase.data.local.EmployeeEntity
 fun EmployeeList(
     modifier: Modifier = Modifier,
     employees: List<EmployeeEntity>,
-    onDelete: (Int) -> Unit
+    onDelete: (Int) -> Unit,
+    onEdit: (EmployeeEntity) -> Unit
 ) {
     Column(modifier = modifier.fillMaxSize()) {
         Text(
@@ -50,6 +51,9 @@ fun EmployeeList(
                         age = employee.age,
                         onDelete = {
                             onDelete(employee.id)
+                        },
+                        onEdit = {
+                            onEdit(employee)
                         }
                     )
                 }
