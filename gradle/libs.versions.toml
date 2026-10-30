@@ -11,9 +11,11 @@ composeBom = "2026.09.00"
 roomDatabase = "2.8.5"
 material3 = "1.4.0"
 foundation = "1.12.1"
+materialIcons = "1.7.8"
 
 
 [libraries]
+androidx-compose-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIcons" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
