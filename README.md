@@ -17,7 +17,7 @@ The application provides an Employee Manager screen where users can enter employ
 
 - **Add employees** — Save employee names and ages.
 - **View employees** — Display saved employee records in a list.
-- **Update employees** — Modify an existing record using its employee ID.
+- **Update employees** — Modify an existing record.
 - **Delete employees** — Remove records from the database.
 - **Local data persistence** — Use Room to manage structured local data.
 - **Jetpack Compose UI** — Build the interface using declarative UI components.
