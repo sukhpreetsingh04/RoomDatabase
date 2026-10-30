@@ -8,13 +8,16 @@ This project explores how structured data can be stored, retrieved, updated, and
 
 The application provides an Employee Manager screen where users can enter employee details and manage saved records.
 
-<img src="docs/showcase/app-screenshots.jpeg" alt="employee-manager" width="300" />
+<p text-align="center">
+   <img src="docs/showcase/app-screenshots.jpeg" alt="employee-manager" width="300" />
+   <img src="docs/showcase/screenshot.jpeg" alt="employee-list" width="300" />
+</p>
 
 ## ✨ Features
 
 - **Add employees** — Save employee names and ages.
 - **View employees** — Display saved employee records in a list.
-- **Update employees** — Modify an existing record using its employee ID.
+- **Update employees** — Modify an existing record.
 - **Delete employees** — Remove records from the database.
 - **Local data persistence** — Use Room to manage structured local data.
 - **Jetpack Compose UI** — Build the interface using declarative UI components.
